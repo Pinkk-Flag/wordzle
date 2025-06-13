@@ -1,6 +1,11 @@
 from termcolor import colored
-env_file = "settings.env"
+import os
+import random
+
+
 def run():
+    env_file = "settings.env"
+    
     wordlength_value = 5
     with open(env_file, "r") as file:
         # Read all lines from the file
@@ -13,4 +18,16 @@ def run():
             wordlength_value = line.split('=')[1].strip()
             break
     
-    with open("")
+    os.chdir("wordlists")
+    print(os.getcwd()) 
+    with open(f"{wordlength_value}.txt") as textfile:
+        lines = len(textfile.readlines())
+        
+    """ TODO - Create a random number based on the number of lines and then afterwards pick a word from this list. 
+    
+    After that, create an array and then prompt the user.
+    Think of creative ways to show ouput. 
+    """
+    
+    
+    os.chdir("..")

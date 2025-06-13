@@ -1,1 +1,2 @@
-print("Thank you for playing Wordzle!")
+def run():
+    print("Thank you for playing wordzle!")

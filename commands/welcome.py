@@ -1,4 +1,4 @@
-
+from termcolor import colored
 
 def run():
     ascii_art = r"""
@@ -15,11 +15,11 @@ def run():
                                                                        
     """
 
-    print(ascii_art)
+    print(colored(ascii_art, "light_green"))
 
 
 
-    print("Type 'help' below to get help on how to get started, else, type 'play' to start playing!")
+    print("Type", colored('help', "light_magenta", attrs=["bold"]), "below to get help on how to get started, else, type", colored('play', "light_magenta", attrs=["bold"]) ,"to start playing!")
 
     print("\n")
 

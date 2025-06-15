@@ -1,15 +1,30 @@
 import requests
 
+def fetchsetting(settingname):
+    env_file = "settings.env"
+
+    with open(env_file, "r") as file:
+        lines = file.readlines()
+
+    found = False
+    for line in lines:
+        if line.strip().startswith(settingname):
+            returnvalue = line.split('=')[1].strip()
+            return returnvalue
+            found = True
+            break
+
+    if not found:
+        raise Exception("ATTEMPTS setting not found in settings.env")
 
 def curate():
     res = requests.get("https://raw.githubusercontent.com/first20hours/google-10000-english/refs/heads/master/google-10000-english-no-swears.txt")
     wordlist = res.text
     
     
-    lower = 3
-    upper = 10
+    lower = int(fetchsetting("MINWORDS="))
+    upper = int(fetchsetting("MAXWORDS="))
     i = lower
-    
     
     import os
     os.makedirs("wordlists", exist_ok=True)
@@ -37,3 +52,4 @@ def filtercuratation(word_length):
 
 def run():
     curate()
+    

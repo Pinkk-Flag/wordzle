@@ -1,2 +1,6 @@
+from termcolor import colored
+
 def run():
-    print("Thank you for playing wordzle!")
+    print()
+    print(colored("Thank you for playing wordzle!", "yellow", attrs=["bold"]))
+    print()

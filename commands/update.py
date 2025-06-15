@@ -1,4 +1,5 @@
 import os
+from termcolor import colored
 
 def update_env_variable(variable_name, new_value, env_file="settings.env"):
     # Read the current content of the .env file
@@ -21,7 +22,8 @@ def update_env_variable(variable_name, new_value, env_file="settings.env"):
     with open(env_file, "w") as file:
         file.writelines(lines)
 
-    print(f"Updated {variable_name} to {new_value} in {env_file}.")
+    print(colored(f"Updated {variable_name} to {new_value} in {env_file}", "green"))
+    print()
 
 def run():
     env_file = "settings.env"
@@ -29,12 +31,17 @@ def run():
         content = file.readlines()
 
     print("\nCurrent environment variables in .env file:")
+    print()
     for line in content:
         # Skip empty lines and comments
         if line.strip() and not line.startswith("#"):
-            print(line.strip())
+            print(colored(line.strip(), "light_magenta"))
+            print()
 
     variable = input("Enter the variable you want to update: ").strip().upper()
+    
     new_value = input(f"Enter the new value for {variable}: ").strip().upper()
 
     update_env_variable(variable, new_value)
+    
+
